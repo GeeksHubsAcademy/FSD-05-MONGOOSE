@@ -3,6 +3,7 @@ import express from "express";
 import "dotenv/config";
 import { dbConnection } from "./database/db.js";
 import { createGame } from "./entities/games/games.controller.js";
+import { router as gamesRoutes } from './entities/games/games.routes.js'
 
 const app = express();
 
@@ -17,7 +18,9 @@ app.get("/healthy", (req, res) => {
 	});
 });
 
-app.post('/games', createGame)
+// app.post('/games', createGame)
+
+app.use('/games', gamesRoutes)
 
 dbConnection()
 .then(() => {
