@@ -9,7 +9,13 @@ const GameSchema = new Schema(
 		description: {
 			type: String,
 			required: true,
-		}
+		},
+    userFavourites: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+      }
+    ]
 	},
 	{
 		timestamps: true,
